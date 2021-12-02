@@ -37,7 +37,6 @@ class RecursionTest {
 	void powTest() {
 	
 		assertEquals(0,  Recursion.pow(0, 3));
-		assertEquals(0,  Recursion.pow(0, 0));
 		assertEquals(4,  Recursion.pow(-2, 2));
 		assertEquals(4,  Recursion.pow(2, 2));
 		assertEquals(-8,  Recursion.pow(-2, 3));
@@ -50,9 +49,15 @@ class RecursionTest {
 		}catch(IllegalArgumentException e) {
 			fl = true;
 		}
+		fl = false;
+		try {
+			Recursion.pow(0,0);
+		}catch(IllegalArgumentException e) {
+			fl = true;
+		}
 		assertTrue(fl);
+		
 		assertEquals(1, Recursion.pow(23, 0));
-		// V.R. Checking undefined case Recursion.pow(0, 0) ?
 	}
 	@Test
 	void arraySumTest() {
@@ -77,6 +82,8 @@ class RecursionTest {
 		assertTrue(Recursion.isSubstring("Elephant", "Elep"));
 		assertTrue(Recursion.isSubstring("Elephant", "pha"));
 		assertFalse(Recursion.isSubstring("Elephant", "elep"));
+		assertTrue(Recursion.isSubstring("birhbird", "bird"));
+		assertFalse(Recursion.isSubstring("birthbird", "birds"));
 
 		boolean fl = false;
 		try {

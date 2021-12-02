@@ -19,19 +19,19 @@ public class Recursion {
 	 *         apply the #1 and #2 requirements 4. No additional static fields
 	 */
 	static public long pow(int a, int b) {
-//		if (a == 0 && b == 0) {
-//		throw new IllegalArgumentException("Arguments canot be zero");
-//	}
-		if (b < 0) {
+		if (a == 0 && b == 0) {
+		throw new IllegalArgumentException("Arguments canot be zero");
+	}
+		if (b < 0 ) {
 			throw new IllegalArgumentException("Number can't be a negative");
 		}
-		if (a == 0) {
+		if (a == 0 && b != 0) {
 			return 0;
 		}
-		if (b == 0) {
+		if (b == 0 & a != 0) {
 			return 1;
 		}
-		if (b == 1) {
+		if (b == 1 && a != 0) {
 			return a;
 		}
 		a = a < 0 && even(b) ? -a : a;
@@ -92,19 +92,20 @@ public class Recursion {
 		if (str.length() < substr.length()) {
 			return false;
 		}
-		int ind = findIndex(str, substr, 0);
-		if (ind < 0) {
-			return false;
-		}
-		str = str.substring(ind, ind + substr.length());
-		ind = 0;
-		return ind < str.length() ? str.charAt(ind + 1) == substr.charAt(ind + 1) : false;
+		return isEqualdByInd(str,substr,0,0);
 	}
 
-	private static int findIndex(String str, String substr, int index) {
-		if (str.charAt(index) == substr.charAt(0)) {
-			return index;
+	private static boolean isEqualdByInd(String str, String substr, int strIndex, int subIndex) {
+		if(subIndex == substr.length()) {
+			return true;
 		}
-		return index < str.length() ? findIndex(str, substr, index + 1) : -1;
+		if(strIndex== str.length()) {
+			return false;
+		}
+		if (str.charAt(strIndex) == substr.charAt(subIndex)) {
+			subIndex++;	
+		}
+		return strIndex < str.length()? isEqualdByInd(str,substr, strIndex+1, subIndex) : false;
+
 	}
 }
