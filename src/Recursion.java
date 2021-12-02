@@ -36,11 +36,15 @@ public class Recursion {
 		if (b == 1) {
 			return a;
 		}
-		// V.R. The operation % is prohibited. The method is required instead of.
-		a = a < 0 && b % 2 == 0 ? -a : a;
+		
+		a = a < 0 && remainderOfDivisionBy2(b) == 0 ? -a : a;
 		return multiplay(a, pow(a, b - 1));
 	}
 
+	public static int remainderOfDivisionBy2(int b) {
+		return b > 2? remainderOfDivisionBy2(b-2) : b==2 ? 0:1 ;
+				
+	}
 	private static long multiplay(int a, long multiplier) {
 		return multiplier > 0 ? a + multiplay(a, multiplier - 1) : 0;
 	}
@@ -66,23 +70,12 @@ public class Recursion {
 	 *         methods No static fields
 	 */
 //TODO Done!!
-	// V.R. Why Integer? int is enough good
-	public static Integer square(int x) {
-		if (x == 1) {
-			return 1;
+	public static int square(int x) {
+		if (x == 1 || x ==0) {
+			return x;
 		}
-		// V.R. x = Math.abs(x) is also suitable
 		x = x < 0 ? -x : x;
 		//((x-1)+1)^2 = (x-1)^2 +2(x-1) +1= (x-1)^2 +2x-2+1 = (x-1)^+2x-1
-		return x > 0 ? square(x - 1) + x + x - 1 : 0;
+		return  square(x - 1) + x + x - 1;
 	}
-	/* V.R. Compare with following
-	public static int square(int x) {
-	   x =  Math.abs(x);
-	   if(x==1 || x==0) {
-	   	return x;
-	   }
-	   return square(x - 1) + x + x - 1;
-	 }  
-	 */
 }

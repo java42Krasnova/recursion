@@ -36,10 +36,10 @@ class RecursionTest {
 	}
 	@Test
 	void powTest() {
-		/* V.R. The checking
-		 *  assertEquals(0,  Recursion.pow(0, 3));
-		 *  isn't redundant
-		 */
+	
+		assertEquals(0,  Recursion.pow(0, 3));
+		assertEquals(0,  Recursion.pow(0, 0));
+
 		assertEquals(4,  Recursion.pow(-2, 2));
 		assertEquals(4,  Recursion.pow(2, 2));
 		assertEquals(-8,  Recursion.pow(-2, 3));
@@ -72,6 +72,12 @@ class RecursionTest {
 		assertEquals(4, Recursion.square(-2));
 		assertEquals(100, Recursion.square(10));
 		
+	}
+	@Test
+	void ost() {
+		assertEquals(1, Recursion.remainderOfDivisionBy2(5));
+		assertEquals(0, Recursion.remainderOfDivisionBy2(4));
+
 	}
 }
 
