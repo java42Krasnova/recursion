@@ -26,12 +26,17 @@ public class Recursion {
 		if (a == 0) {
 			return 0;
 		}
+		/* V.R.
+		 * What about the case a=0 && b=0?
+		 * As I know 0^0 isn't defined
+		 */
 		if (b == 0) {
 			return 1;
 		}
 		if (b == 1) {
 			return a;
 		}
+		// V.R. The operation % is prohibited. The method is required instead of.
 		a = a < 0 && b % 2 == 0 ? -a : a;
 		return multiplay(a, pow(a, b - 1));
 	}
@@ -61,12 +66,23 @@ public class Recursion {
 	 *         methods No static fields
 	 */
 //TODO Done!!
+	// V.R. Why Integer? int is enough good
 	public static Integer square(int x) {
 		if (x == 1) {
 			return 1;
 		}
+		// V.R. x = Math.abs(x) is also suitable
 		x = x < 0 ? -x : x;
 		//((x-1)+1)^2 = (x-1)^2 +2(x-1) +1= (x-1)^2 +2x-2+1 = (x-1)^+2x-1
 		return x > 0 ? square(x - 1) + x + x - 1 : 0;
 	}
+	/* V.R. Compare with following
+	public static int square(int x) {
+	   x =  Math.abs(x);
+	   if(x==1 || x==0) {
+	   	return x;
+	   }
+	   return square(x - 1) + x + x - 1;
+	 }  
+	 */
 }

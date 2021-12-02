@@ -36,6 +36,10 @@ class RecursionTest {
 	}
 	@Test
 	void powTest() {
+		/* V.R. The checking
+		 *  assertEquals(0,  Recursion.pow(0, 3));
+		 *  isn't redundant
+		 */
 		assertEquals(4,  Recursion.pow(-2, 2));
 		assertEquals(4,  Recursion.pow(2, 2));
 		assertEquals(-8,  Recursion.pow(-2, 3));
@@ -50,6 +54,7 @@ class RecursionTest {
 		}
 		assertTrue(fl);
 		assertEquals(1, Recursion.pow(23, 0));
+		// V.R. Checking undefined case Recursion.pow(0, 0) ?
 	}
 	@Test
 	void arraySumTest() {
@@ -59,6 +64,10 @@ class RecursionTest {
 	}
 	@Test 
 	void squereTest() {
+		// V.R. It is also useful
+		assertEquals(0, Recursion.square(0));
+		// V.R. It is also useful
+		assertEquals(1, Recursion.square(1));
 		assertEquals(4, Recursion.square(2));
 		assertEquals(4, Recursion.square(-2));
 		assertEquals(100, Recursion.square(10));
