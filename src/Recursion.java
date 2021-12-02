@@ -18,7 +18,6 @@ public class Recursion {
 	 *         operations either +/-; 3. Additional methods(no standart) should
 	 *         apply the #1 and #2 requirements 4. No additional static fields
 	 */
-//TODO DONE!!
 	static public long pow(int a, int b) {
 //		if (a == 0 && b == 0) {
 //		throw new IllegalArgumentException("Arguments canot be zero");
@@ -35,17 +34,17 @@ public class Recursion {
 		if (b == 1) {
 			return a;
 		}
-		a = a < 0 && remainderOfDivisionBy2(b) == 0 ? -a : a;
+		a = a < 0 && even(b) ? -a : a;
 		return multiplay(a, pow(a, b - 1));
 	}
 
-	public static int remainderOfDivisionBy2(int b) {
-		if(b == 2) {
-			return 0;
+	private static boolean even(int b) {
+		if (b == 2) {
+			return true;
 		}
-		return b > 2? remainderOfDivisionBy2(b-2) :1 ;
-				
+		return b > 2 ? even(b - 2) : false;
 	}
+
 	private static long multiplay(int a, long multiplier) {
 		return multiplier > 0 ? a + multiplay(a, multiplier - 1) : 0;
 	}
@@ -70,13 +69,42 @@ public class Recursion {
 	 * @return x^2 1. No cycles 2. Allowed only operators +or - no additional
 	 *         methods No static fields
 	 */
-//TODO Done!!
+
 	public static int square(int x) {
-		if (x == 1 || x ==0) {
+		if (x == 1 || x == 0) {
 			return x;
 		}
 		x = x < 0 ? -x : x;
-		//((x-1)+1)^2 = (x-1)^2 +2(x-1) +1= (x-1)^2 +2x-2+1 = (x-1)^2+2x-1
-		return  square(x - 1) + x + x - 1;
+		// ((x-1)+1)^2 = (x-1)^2 +2(x-1) +1= (x-1)^2 +2x-2+1 = (x-1)^2+2x-1=x^2
+		return square(x - 1) + x + x - 1;
+	}
+
+//	boolean isSubstring (String str, String substr)
+//	 returns true if a given 'substr' is indeed the substring of a given 'string'.
+//	Challenges: 1. From class String to apply only following methods :
+//	charAt(int ind); String substring(int ind); int length(); 2. No cycles;
+//	
+	//TODO Done!!
+	public static boolean isSubstring(String str, String substr) {
+		if (str.length() == 0 || substr.length() == 0) {
+			throw new IllegalArgumentException("Wrong arguments");
+		}
+		if (str.length() < substr.length()) {
+			return false;
+		}
+		int ind = findIndex(str, substr, 0);
+		if (ind < 0) {
+			return false;
+		}
+		str = str.substring(ind, ind + substr.length());
+		ind = 0;
+		return ind < str.length() ? str.charAt(ind + 1) == substr.charAt(ind + 1) : false;
+	}
+
+	private static int findIndex(String str, String substr, int index) {
+		if (str.charAt(index) == substr.charAt(0)) {
+			return index;
+		}
+		return index < str.length() ? findIndex(str, substr, index + 1) : -1;
 	}
 }

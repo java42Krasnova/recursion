@@ -38,7 +38,6 @@ class RecursionTest {
 	
 		assertEquals(0,  Recursion.pow(0, 3));
 		assertEquals(0,  Recursion.pow(0, 0));
-
 		assertEquals(4,  Recursion.pow(-2, 2));
 		assertEquals(4,  Recursion.pow(2, 2));
 		assertEquals(-8,  Recursion.pow(-2, 3));
@@ -71,10 +70,30 @@ class RecursionTest {
 		
 	}
 	@Test
-	void ost() {
-		assertEquals(1, Recursion.remainderOfDivisionBy2(5));
-		assertEquals(0, Recursion.remainderOfDivisionBy2(4));
+	void isSubstringTest() {
+		assertTrue(Recursion.isSubstring("birthday", "day"));
+		assertFalse(Recursion.isSubstring("day", "ai"));
+		assertFalse(Recursion.isSubstring("sun", "telephone"));
+		assertTrue(Recursion.isSubstring("Elephant", "Elep"));
+		assertTrue(Recursion.isSubstring("Elephant", "pha"));
+		assertFalse(Recursion.isSubstring("Elephant", "elep"));
+
+		boolean fl = false;
+		try {
+			Recursion.isSubstring("morning", "");
+		}catch(IllegalArgumentException e) {
+			fl = true;
+		}
+		assertTrue(fl);
+		 fl = false;
+		try {
+			Recursion.isSubstring("", "morning");
+		}catch(IllegalArgumentException e) {
+			fl = true;
+		}
+		assertTrue(fl);
 
 	}
+	
 }
 
