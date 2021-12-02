@@ -1,4 +1,3 @@
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -64,9 +63,7 @@ class RecursionTest {
 	}
 	@Test 
 	void squereTest() {
-		// V.R. It is also useful
 		assertEquals(0, Recursion.square(0));
-		// V.R. It is also useful
 		assertEquals(1, Recursion.square(1));
 		assertEquals(4, Recursion.square(2));
 		assertEquals(4, Recursion.square(-2));

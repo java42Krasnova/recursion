@@ -20,29 +20,30 @@ public class Recursion {
 	 */
 //TODO DONE!!
 	static public long pow(int a, int b) {
+//		if (a == 0 && b == 0) {
+//		throw new IllegalArgumentException("Arguments canot be zero");
+//	}
 		if (b < 0) {
 			throw new IllegalArgumentException("Number can't be a negative");
 		}
 		if (a == 0) {
 			return 0;
 		}
-		/* V.R.
-		 * What about the case a=0 && b=0?
-		 * As I know 0^0 isn't defined
-		 */
 		if (b == 0) {
 			return 1;
 		}
 		if (b == 1) {
 			return a;
 		}
-		
 		a = a < 0 && remainderOfDivisionBy2(b) == 0 ? -a : a;
 		return multiplay(a, pow(a, b - 1));
 	}
 
 	public static int remainderOfDivisionBy2(int b) {
-		return b > 2? remainderOfDivisionBy2(b-2) : b==2 ? 0:1 ;
+		if(b == 2) {
+			return 0;
+		}
+		return b > 2? remainderOfDivisionBy2(b-2) :1 ;
 				
 	}
 	private static long multiplay(int a, long multiplier) {
@@ -75,7 +76,7 @@ public class Recursion {
 			return x;
 		}
 		x = x < 0 ? -x : x;
-		//((x-1)+1)^2 = (x-1)^2 +2(x-1) +1= (x-1)^2 +2x-2+1 = (x-1)^+2x-1
+		//((x-1)+1)^2 = (x-1)^2 +2(x-1) +1= (x-1)^2 +2x-2+1 = (x-1)^2+2x-1
 		return  square(x - 1) + x + x - 1;
 	}
 }
