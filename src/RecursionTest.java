@@ -76,26 +76,54 @@ class RecursionTest {
 	}
 	@Test
 	void isSubstringTest() {
-		assertTrue(Recursion.isSubstring("birthday", "day"));
-		assertFalse(Recursion.isSubstring("day", "ai"));
-		assertFalse(Recursion.isSubstring("sun", "telephone"));
-		assertTrue(Recursion.isSubstring("Elephant", "Elep"));
-		assertTrue(Recursion.isSubstring("Elephant", "pha"));
-		assertFalse(Recursion.isSubstring("Elephant", "elep"));
-		assertTrue(Recursion.isSubstring("birhbird", "bird"));
-		assertFalse(Recursion.isSubstring("birthbird", "birds"));
-		assertFalse(Recursion.isSubstring("sona", "sna"));
+		assertTrue(Recursion.isSubstring1("birthday", "day"));
+		assertFalse(Recursion.isSubstring1("day", "ai"));
+		assertFalse(Recursion.isSubstring1("sun", "telephone"));
+		assertTrue(Recursion.isSubstring1("Elephant", "Elep"));
+		assertTrue(Recursion.isSubstring1("Elephant", "pha"));
+		assertFalse(Recursion.isSubstring1("Elephant", "elep"));
+		assertTrue(Recursion.isSubstring1("birhbird", "bird"));
+		assertFalse(Recursion.isSubstring1("birthbird", "birds"));
+		assertFalse(Recursion.isSubstring1("sona", "sna"));
 		
 		boolean fl = false;
 		try {
-			Recursion.isSubstring("morning", "");
+			Recursion.isSubstring1("morning", "");
 		}catch(IllegalArgumentException e) {
 			fl = true;
 		}
 		assertTrue(fl);
 		 fl = false;
 		try {
-			Recursion.isSubstring("", "morning");
+			Recursion.isSubstring1("", "morning");
+		}catch(IllegalArgumentException e) {
+			fl = true;
+		}
+		assertTrue(fl);
+
+	}
+	@Test
+	void isSubstringTest2() {
+		assertTrue(Recursion.isSubstring2("birthday", "day"));
+		assertFalse(Recursion.isSubstring2("day", "ai"));
+		assertFalse(Recursion.isSubstring2("sun", "telephone"));
+		assertTrue(Recursion.isSubstring2("Elephant", "Elep"));
+		assertTrue(Recursion.isSubstring2("Elephant", "pha"));
+		assertFalse(Recursion.isSubstring2("Elephant", "elep"));
+		assertTrue(Recursion.isSubstring2("birhbird", "bird"));
+		assertFalse(Recursion.isSubstring2("birthbird", "birds"));
+		assertFalse(Recursion.isSubstring2("sona", "sna"));
+		
+		boolean fl = false;
+		try {
+			Recursion.isSubstring2("morning", "");
+		}catch(IllegalArgumentException e) {
+			fl = true;
+		}
+		assertTrue(fl);
+		 fl = false;
+		try {
+			Recursion.isSubstring2("", "morning");
 		}catch(IllegalArgumentException e) {
 			fl = true;
 		}

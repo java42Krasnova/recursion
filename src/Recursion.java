@@ -84,18 +84,30 @@ public class Recursion {
 //	Challenges: 1. From class String to apply only following methods :
 //	charAt(int ind); String substring(int ind); int length(); 2. No cycles;
 //	
-	// TODO Done!!
-	public static boolean isSubstring(String str, String substr) {
+	// TODO Done!! ver 1 with out String substring
+	public static boolean isSubstring1(String str, String substr) {
 		if (str.length() == 0 || substr.length() == 0) {
 			throw new IllegalArgumentException("Wrong arguments");
 		}
 		if (str.length() < substr.length()) {
 			return false;
 		}
-		return isEqualdByInd(str, substr, 0, 0);
+		return isEqualdByInd1(str, substr, 0, 0);
 	}
 
-	private static boolean isEqualdByInd(String str, String substr, int strIndex, int subIndex) {
+	// TODO Done!! ver 2 with String substring
+	public static boolean isSubstring2(String str, String substr) {
+		if (str.length() == 0 || substr.length() == 0) {
+			throw new IllegalArgumentException("Wrong arguments");
+		}
+		if (str.length() < substr.length()) {
+			return false;
+		}
+		return isEqualdByInd2(str, substr, 0);
+
+	}
+
+	private static boolean isEqualdByInd1(String str, String substr, int strIndex, int subIndex) {
 		if ((str.length() - strIndex) < substr.length() && subIndex == 0) {
 			return false;
 		}
@@ -107,7 +119,21 @@ public class Recursion {
 				return true;
 			}
 		}
-		return strIndex < str.length() ? isEqualdByInd(str, substr, strIndex + 1, subIndex) : false;
+		return strIndex < str.length() ? isEqualdByInd1(str, substr, strIndex + 1, subIndex) : false;
+	}
+
+	private static boolean isEqualdByInd2(String str, String substr, int subIndex) {
+		if (str.charAt(subIndex) != substr.charAt(subIndex)) {
+			if (subIndex > 0) {
+				subIndex = 0;
+			}
+			str = str.substring(1);
+		} else if (str.charAt(subIndex) == substr.charAt(subIndex++)) {
+			if (subIndex == substr.length()) {
+				return true;
+			}
+		}
+		return str.length() >= substr.length() ? isEqualdByInd2(str, substr, subIndex) : false;
 
 	}
 }
