@@ -99,13 +99,13 @@ public class Recursion {
 		if ((str.length() - strIndex) < substr.length() && subIndex == 0) {
 			return false;
 		}
-		if (subIndex == substr.length()) {
-			return true;
-		}
 		if (str.charAt(strIndex) != substr.charAt(subIndex) && subIndex != 0) {
 			subIndex = 0;
 		} else if (str.charAt(strIndex) == substr.charAt(subIndex)) {
 			subIndex++;
+			if (subIndex == substr.length()) {
+				return true;
+			}
 		}
 		return strIndex < str.length() ? isEqualdByInd(str, substr, strIndex + 1, subIndex) : false;
 

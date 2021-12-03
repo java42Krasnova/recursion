@@ -76,7 +76,7 @@ class RecursionTest {
 	}
 	@Test
 	void isSubstringTest() {
-		//assertTrue(Recursion.isSubstring("birthday", "day"));
+		assertTrue(Recursion.isSubstring("birthday", "day"));
 		assertFalse(Recursion.isSubstring("day", "ai"));
 		assertFalse(Recursion.isSubstring("sun", "telephone"));
 		assertTrue(Recursion.isSubstring("Elephant", "Elep"));
