@@ -20,9 +20,9 @@ public class Recursion {
 	 */
 	static public long pow(int a, int b) {
 		if (a == 0 && b == 0) {
-		throw new IllegalArgumentException("Arguments canot be zero");
-	}
-		if (b < 0 ) {
+			throw new IllegalArgumentException("Arguments canot be zero");
+		}
+		if (b < 0) {
 			throw new IllegalArgumentException("Number can't be a negative");
 		}
 		if (a == 0 && b != 0) {
@@ -84,7 +84,7 @@ public class Recursion {
 //	Challenges: 1. From class String to apply only following methods :
 //	charAt(int ind); String substring(int ind); int length(); 2. No cycles;
 //	
-	//TODO Done!!
+	// TODO Done!!
 	public static boolean isSubstring(String str, String substr) {
 		if (str.length() == 0 || substr.length() == 0) {
 			throw new IllegalArgumentException("Wrong arguments");
@@ -92,24 +92,22 @@ public class Recursion {
 		if (str.length() < substr.length()) {
 			return false;
 		}
-		return isEqualdByInd(str,substr,0,0);
+		return isEqualdByInd(str, substr, 0, 0);
 	}
 
 	private static boolean isEqualdByInd(String str, String substr, int strIndex, int subIndex) {
-		int subIndPrev=0;
-		if((str.length() - strIndex) < substr.length() && subIndex == 0) {
+		if ((str.length() - strIndex) < substr.length() && subIndex == 0) {
 			return false;
 		}
-		if(subIndex == substr.length()) {
+		if (subIndex == substr.length()) {
 			return true;
 		}
-		if (str.charAt(strIndex) == substr.charAt(subIndex)) {
-			subIndPrev = subIndex++;
-		}
-		if(str.charAt(strIndex) != substr.charAt(subIndPrev) && subIndex!=0) {
+		if (str.charAt(strIndex) != substr.charAt(subIndex) && subIndex != 0) {
 			subIndex = 0;
+		} else if (str.charAt(strIndex) == substr.charAt(subIndex)) {
+			subIndex++;
 		}
-		return strIndex < str.length()? isEqualdByInd(str,substr, strIndex+1, subIndex) : false;
+		return strIndex < str.length() ? isEqualdByInd(str, substr, strIndex + 1, subIndex) : false;
 
 	}
 }
