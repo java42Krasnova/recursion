@@ -85,7 +85,7 @@ class RecursionTest {
 		assertTrue(Recursion.isSubstring("birhbird", "bird"));
 		assertFalse(Recursion.isSubstring("birthbird", "birds"));
 		assertFalse(Recursion.isSubstring("sona", "sna"));
-	
+		
 		boolean fl = false;
 		try {
 			Recursion.isSubstring("morning", "");
