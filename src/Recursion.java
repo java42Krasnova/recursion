@@ -96,14 +96,18 @@ public class Recursion {
 	}
 
 	private static boolean isEqualdByInd(String str, String substr, int strIndex, int subIndex) {
+		int subIndPrev=0;
+		if((str.length() - strIndex) < substr.length() && subIndex == 0) {
+			return false;
+		}
 		if(subIndex == substr.length()) {
 			return true;
 		}
-		if(strIndex== str.length()) {
-			return false;
-		}
 		if (str.charAt(strIndex) == substr.charAt(subIndex)) {
-			subIndex++;	
+			subIndPrev = subIndex++;
+		}
+		if(str.charAt(strIndex) != substr.charAt(subIndPrev) && subIndex!=0) {
+			subIndex = 0;
 		}
 		return strIndex < str.length()? isEqualdByInd(str,substr, strIndex+1, subIndex) : false;
 
